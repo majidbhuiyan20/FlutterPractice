@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/auth/screen/login_screen.dart';
+import 'package:flutter_practice/widgets/snack_bar.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthService{

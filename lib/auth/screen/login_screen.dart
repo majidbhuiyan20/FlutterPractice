@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/auth/screen/signup_screen.dart';
+import 'package:flutter_practice/view/home_screen.dart';
 import 'package:flutter_practice/widgets/my_button.dart';
+import 'package:flutter_practice/widgets/snack_bar.dart';
+import 'package:flutter_practice/auth/service/auth_service.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -12,6 +15,42 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
+  String? _emailError;
+  String? _passwordError;
+  final AuthService _authService = AuthService();
+  bool isLoadin = false;
+  bool isPasswordHidden = true;
+  void _logIn() async{
+    setState(() {
+      _emailError = null;
+      _passwordError = null;
+    });
+    final String email = emailController.text.trim();
+    final String password = passwordController.text.trim();
+    // if(!email.contains(".com")){
+    //   showSnackBar(context, "Invalid Email. It must contain .com", color: Colors.red);
+    // }
+    if(!mounted)return;
+    setState(() {
+      isLoadin = true;
+    });
+    final result = await _authService.logIn(email, password);
+    if(result==null){
+      //Success Case
+      setState(() {
+        isLoadin = false;
+      });
+      showSnackBar(context, "Sign Up Successful and Turned to Login", color: Colors.green);
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+    }else{
+      //Error Case
+      showSnackBar(context, result);
+    }
+
+
+  }
+
   @override
   void dispose() {
     emailController.dispose();
@@ -71,7 +110,9 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 width: double.infinity,
                 child: MyButton(
-                    onTap: () {}, buttonText: "Login", color: Colors.blueAccent),
+                    onTap: () {
+                      _logIn();
+                    }, buttonText: "Login", color: Colors.blueAccent),
               ),
               SizedBox(height: 20,),
 

@@ -30,9 +30,15 @@ class _SignupScreenState extends State<SignupScreen> {
     // if(!email.contains(".com")){
     //   showSnackBar(context, "Invalid Email. It must contain .com", color: Colors.red);
     // }
+    setState(() {
+      isLoadin = true;
+    });
     final result = await _authService.signUp(email, password);
     if(result==null){
       //Success Case
+      setState(() {
+        isLoadin = false;
+      });
       showSnackBar(context, "Sign Up Successful and Turned to Login", color: Colors.green);
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
     }else{
