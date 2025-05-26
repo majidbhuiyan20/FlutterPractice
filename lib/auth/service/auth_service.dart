@@ -1,3 +1,6 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_practice/auth/screen/login_screen.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthService{
@@ -41,6 +44,17 @@ class AuthService{
     }
     catch(e){
       return "Error: $e";
+    }
+  }
+
+  // Function to LogOut
+  Future<void> logOut(BuildContext context)async{
+    try{
+      await supabase.auth.signOut();
+      if(!context.mounted) return;
+      Navigator.of(context,).pushReplacement(MaterialPageRoute(builder: (_)=> LoginScreen()));
+    }catch(e){
+      print("Logout Error $e");
     }
   }
 
