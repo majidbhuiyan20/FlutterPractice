@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/auth/screen/signup_screen.dart';
 import 'package:flutter_practice/widgets/my_button.dart';
 
-import 'login_screen.dart';
-
-class SignupScreen extends StatefulWidget {
-  const SignupScreen({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  State<SignupScreen> createState() => _SignupScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _SignupScreenState extends State<SignupScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   @override
@@ -31,7 +30,7 @@ class _SignupScreenState extends State<SignupScreen> {
           child: Column(
             children: [
               Text(
-                "Sign Up",
+                "LogIn",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 30,
@@ -72,17 +71,17 @@ class _SignupScreenState extends State<SignupScreen> {
               SizedBox(
                 width: double.infinity,
                 child: MyButton(
-                    onTap: () {}, buttonText: "Sign Up", color: Colors.blueAccent),
+                    onTap: () {}, buttonText: "Login", color: Colors.blueAccent),
               ),
               SizedBox(height: 20,),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Already Have an account?", style: TextStyle(color: Colors.grey, fontSize: 18),),
+                  Text("Don't Have an account?", style: TextStyle(color: Colors.grey, fontSize: 18),),
                   TextButton(onPressed: (){
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
-                  }, child: Text("Login", style: TextStyle(color: Colors.blueAccent,fontSize: 18, fontWeight: FontWeight.bold ),))
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignupScreen()));
+                  }, child: Text("Sign Up", style: TextStyle(color: Colors.blueAccent,fontSize: 18, fontWeight: FontWeight.bold ),))
                 ],
               ),
             ],
