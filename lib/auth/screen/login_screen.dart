@@ -45,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
     }else{
       //Error Case
-      showSnackBar(context, result);
+      showSnackBar(context, result, color: Colors.red);
     }
 
 

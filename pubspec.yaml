@@ -37,6 +37,9 @@ dependencies:
   provider: ^6.1.5
   supabase: ^2.7.0
   supabase_flutter: ^2.9.0
+  http: ^1.4.0
+  cached_network_image: ^3.4.1
+
 
 dev_dependencies:
   flutter_test:

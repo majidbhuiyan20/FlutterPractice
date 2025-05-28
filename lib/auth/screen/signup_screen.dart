@@ -43,7 +43,7 @@ class _SignupScreenState extends State<SignupScreen> {
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
     }else{
       //Error Case
-      showSnackBar(context, result);
+      showSnackBar(context, result, color: Colors.red);
     }
 
 
