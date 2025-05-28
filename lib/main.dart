@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/api/basic_api/basic_api_home_page.dart';
 import 'package:flutter_practice/auth/screen/login_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: LoginScreen(),
+      home: BasicApiHomePage(),
     );
   }
 }
